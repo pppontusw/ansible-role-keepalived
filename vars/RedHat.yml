@@ -1,0 +1,4 @@
+#processes to monitor (using pidof) - if your process names vary by distribution define this variable in vars/Debian & vars/RedHat instead
+#keepalived_type: 
+  #- nginx 
+  #- haproxy

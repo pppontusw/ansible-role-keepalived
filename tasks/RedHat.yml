@@ -1,0 +1,16 @@
+- name: install keepalived
+  yum: name={{item}} state=present
+  with_items:
+    - keepalived
+
+- name: enable firewalld service
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+  tags: firewalld
+
+- name: configure firewalld
+  shell: firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" destination address="224.0.0.18" protocol value="ip" accept' --permanent
+  notify: restart firewalld
+  tags: firewalld
